@@ -142,7 +142,7 @@ void board_init_f_init_reserve(ulong base)
 
 	gd_ptr = (struct global_data *)base;
 	/* zero the area */
-	memset(gd_ptr, '\0', sizeof(*gd));
+	memset(gd_ptr, '\0', roundup(sizeof(*gd), 16));
 	/* set GD unless architecture did it already */
 #if !defined(CONFIG_ARM)
 	arch_setup_gd(gd_ptr);
